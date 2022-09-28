@@ -6,6 +6,22 @@ const pTaskCount = document.querySelector("#pTaskCount");
 const pTaskCountText = " tasks completed";
 const pInfo = document.querySelector("#pInfo");
 
+// For the idiots
+let idiotCounter = 0;
+const idiotArray = ["No, that is not permited.", "Sir, SIR! SIIIR! DONT DO THAT!", "NO NO BAD MONKEY!", "Have you tried some thing else?", "Shouldn't you buy a new mouse by now?", "Hey this isn't a slot machine, stop pressing the button!", "WHAT... ARE... YOU... DOING?!", "Monkey want a banana?", "Have you seen a computer beore? Are you sure?", "For godsake man, get a hold of your self!", "no ... no ... no ... still no ...", "Pss pss kitty get of the computertable, bad kitty!", "PRESS THAT BUTTON ONE MORE TIME, ONE MORE TIME. I DARE YOU, SEE WHAT HAPPENS!"];
+
+function checkIdiot() {
+    idiotCounter++;
+    if (idiotCounter > 3 && idiotCounter < 29) {
+        let rand = Math.round(Math.random() * 11);
+        pInfo.innerText = idiotArray[rand];
+    } else if (idiotCounter == 29) {
+        pInfo.innerText = idiotArray[12];
+    } else if (idiotCounter == 30) {
+        location.reload();
+    }
+};
+
 const todoArray = [];
 
 // To check if the inputed text already exists in the array as a task 
@@ -67,6 +83,7 @@ addBtn.addEventListener("click", () => {
     } else {
         if (existingTask(text) == true) {
             pInfo.innerText = "That task is already in the list!";
+            checkIdiot();
         } else {
             pInfo.innerText = "";
         
