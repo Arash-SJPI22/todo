@@ -80,6 +80,7 @@ addBtn.addEventListener("click", () => {
     let text = input.value;
     if (text === "" || text == null) {
         pInfo.innerText = "You cannot add nothing, nothing is not a task that you can complete. That is only possible in Nirvana and you are not there... yet. Try to complete some more tasks to further your journey to Nirvana."
+        checkIdiot();
     } else {
         if (existingTask(text) == true) {
             pInfo.innerText = "That task is already in the list!";
