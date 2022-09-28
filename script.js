@@ -76,10 +76,6 @@ addBtn.addEventListener("click", () => {
                     pTaskCount.innerText = taskCounter() + pTaskCountText;
                 }
             });
-
-            trashBtn.addEventListener("click", () => {
-                item.remove;
-            })
         };
     };
 });
