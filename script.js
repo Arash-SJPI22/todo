@@ -65,11 +65,13 @@ addBtn.addEventListener("click", () => {
 
             itemLabel.addEventListener("click", () => {
                 if(item.getAttribute("class") == "completed") {
+                    pInfo.innerText = "";
                     item.setAttribute("class", "");
                     todoList.appendChild(item);
                     completedArray(item.innerText);
                     pTaskCount.innerText = taskCounter() + pTaskCountText;
                 } else {
+                    pInfo.innerText = "";
                     item.setAttribute("class", "completed");
                     doneList.appendChild(item);
                     completedArray(item.innerText);
