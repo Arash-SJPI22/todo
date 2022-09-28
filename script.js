@@ -8,6 +8,8 @@ const pInfo = document.querySelector("#pInfo");
 
 const todoArray = [];
 
+// To check if the inputed text already exists in the array as a task 
+// checks the array to see if the text matches any task: content. If it dose it will have an array index above 0 and there fore return true. If if return -1 it will return false
 function existingTask (text) {
     if ((todoArray.findIndex(i => i.task === text)) >= 0) {
         return true;
@@ -16,6 +18,8 @@ function existingTask (text) {
     }
 };
 
+// Function to count the nummber of completed tasks and return that number.
+// It goes through the entire array and checks the if the completed: content is "yes", if so it adds 1 to the tasks counter variable.
 function taskCounter () {
     let tasks = 0;
     for (let i = 0; i < todoArray.length; i++) {
@@ -26,6 +30,8 @@ function taskCounter () {
     return tasks;
 };
 
+// Function that adds the task as an object to the array.
+// It passes the text variable to the object and then adds completed == no , because it is a newly added task and havent been interacted with yet
 function addToArray (text) {
     let obj = {};
     let objText = text;
@@ -34,6 +40,8 @@ function addToArray (text) {
     todoArray.push(obj);
 };
 
+// Function switches completed from yes to no. To be used when clicked on.
+// Firstly it finds the tasks array index. Then it checkes the array with that index and the completed vale and changes it from yes to no or no to yes 
 function completedArray (text) {
     const index = todoArray.findIndex(i => i.task === text);
     if (todoArray[index].completed === "yes") {
@@ -43,6 +51,15 @@ function completedArray (text) {
     };
 };
 
+/* Eventlistener to the button that adds taks to the list.
+First asignes the input value to text. Checks that its not empty.
+Then checks if a task is already in the array, if not. Adds the task to the array as an object.
+Creates an li element and adds it to the todo Ul. Creates a span and adds the task text to it. Adds it to the li item
+Then adds a Eventlistener for the task items.
+if the task has the class completed it removes that class, changes the value of completed to no in the array and recounts the completed taks and shows it
+else it adds the complted class, changes the value of complted to yes and recounts the compelted tasks and displays it.
+Alseo clears any error messages when either is clicked.
+*/
 addBtn.addEventListener("click", () => {
     let text = input.value;
     if (text === "" || text == null) {
