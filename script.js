@@ -18,7 +18,8 @@ function checkIdiot() {
     } else if (idiotCounter == 29) {
         pInfo.innerText = idiotArray[12];
     } else if (idiotCounter == 30) {
-        location.reload();
+        addBtn.hidden = "hidden";
+        pInfo.innerText = "Look at what you made me do. Now go outside insted and play with sticks...";
     }
 };
 
