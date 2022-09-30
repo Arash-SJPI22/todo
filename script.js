@@ -3,27 +3,25 @@ const addBtn = document.querySelector("#myButton");
 const todoList = document.querySelector("#todoList");
 const doneList = document.querySelector("#doneList");
 const pTaskCount = document.querySelector("#pTaskCount");
-const pTaskCountText = " tasks completed";
 const pInfo = document.querySelector("#pInfo");
+const todoArray = [];
 
 // For the idiots
 let idiotCounter = 0;
-const idiotArray = ["No, that is not permited.", "Sir, SIR! SIIIR! DONT DO THAT!", "NO NO BAD MONKEY!", "Have you tried some thing else?", "Shouldn't you buy a new mouse by now?", "Hey this isn't a slot machine, stop pressing the button!", "WHAT... ARE... YOU... DOING?!", "Monkey want a banana?", "Have you seen a computer beore? Are you sure?", "For godsake man, get a hold of your self!", "no ... no ... no ... still no ...", "Pss pss kitty get of the computertable, bad kitty!", "PRESS THAT BUTTON ONE MORE TIME, ONE MORE TIME. I DARE YOU, SEE WHAT HAPPENS!"];
+const idiotArray = ["No, that is not permited.", "Sir, SIR! SIIIR! DONT DO THAT!", "NO NO BAD MONKEY!", "Have you tried some thing else?", "Shouldn't you buy a new mouse by now?", "Hey this isn't a slot machine, stop pressing the button!", "WHAT... ARE... YOU... DOING?!", "Monkey want a banana?", "Have you seen a computer beore? Are you sure?", "For godsake man, get a hold of your self!", "no ... no ... no ... still no ...", "Pss pss kitty get of the computertable, bad kitty!", "Madam, MADAM! PLEASE, leave the button alone.", "PRESS THAT BUTTON ONE MORE TIME, ONE MORE TIME. I DARE YOU, SEE WHAT HAPPENS!"];
 
 function checkIdiot() {
     idiotCounter++;
     if (idiotCounter > 3 && idiotCounter < 29) {
-        let rand = Math.round(Math.random() * 11);
+        let rand = Math.round(Math.random() * 12);
         pInfo.innerText = idiotArray[rand];
     } else if (idiotCounter == 29) {
-        pInfo.innerText = idiotArray[12];
+        pInfo.innerText = idiotArray[13];
     } else if (idiotCounter == 30) {
         addBtn.hidden = "hidden";
-        pInfo.innerText = "Look at what you made me do. Now go outside insted and play with sticks...";
+        pInfo.innerText = "Look at what you made me do. Now go outside and play with sticks...";
     }
 };
-
-const todoArray = [];
 
 // To check if the inputed text already exists in the array as a task 
 // checks the array to see if the text matches any task: value. If it dose it will have an array index of 0 or above and therefore return true. If it dosent exist the answer will be -1 and it will return false
@@ -44,7 +42,7 @@ function taskCounter () {
             tasks++;
         }
     }
-    return tasks;
+    pTaskCount.innerText = tasks + " tasks completed";
 };
 
 // Function that adds the task as an object to the array.
@@ -56,10 +54,19 @@ function addToArray (text) {
     todoArray.push(obj);
 };
 
+
+// Function that removes an object from the array
+// It finds the index of the object and removes it from the array and calls tha taskCounter to recount the completed tasks if perhaps the task that is removed might have been a completed task
+function rmvFromArray (text) {
+    const index = todoArray.findIndex(i => i.task === text)
+    todoArray.splice(index, 1);
+    taskCounter();
+};
+
 // Function switches completed from yes to no. To be used when clicked on.
 // Firstly it finds the tasks array index. Then it checkes the array with that index and the completed vale and changes it from yes to no or no to yes 
 function completedArray (text) {
-    const index = todoArray.findIndex(i => i.task == text);
+    const index = todoArray.findIndex(i => i.task === text);
     if (todoArray[index].completed === "yes") {
         todoArray[index].completed = "no";
     } else {
@@ -91,27 +98,41 @@ addBtn.addEventListener("click", () => {
             addToArray(text);
         
             const item = document.createElement("li");
-            todoList.appendChild(item);
-
             const itemLabel = document.createElement("span");
+            const itemLabel2 = document.createElement("span");
+            const itemBtn = document.createElement("button");
+            
+            todoList.appendChild(item);
             itemLabel.innerText = text;
         
+            itemLabel2.setAttribute("class", "material-symbols-outlined");
+            itemLabel2.innerText = "delete";
+            //itemBtn.setAttribute("class", "material-symbols-outlined");
+            //itemBtn.innerText = ("delete");
+        
             item.appendChild(itemLabel);
+            item.appendChild(itemLabel2);
+            //item.appendChild(itemBtn);
 
             itemLabel.addEventListener("click", () => {
-                if(item.getAttribute("class") === "completed") {
+                if(itemLabel.getAttribute("class") === "completed") {
                     pInfo.innerText = "";
-                    item.setAttribute("class", "");
+                    itemLabel.setAttribute("class", "");
                     todoList.appendChild(item);
-                    completedArray(item.innerText);
-                    pTaskCount.innerText = taskCounter() + pTaskCountText;
+                    completedArray(itemLabel.innerText);
+                    taskCounter();
                 } else {
                     pInfo.innerText = "";
-                    item.setAttribute("class", "completed");
+                    itemLabel.setAttribute("class", "completed");
                     doneList.appendChild(item);
-                    completedArray(item.innerText);
-                    pTaskCount.innerText = taskCounter() + pTaskCountText;
+                    completedArray(itemLabel.innerText);
+                    taskCounter();
                 }
+            });
+
+            itemLabel2.addEventListener("click", () => {   
+                rmvFromArray(text);                
+                item.remove();
             });
         };
     };
