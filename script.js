@@ -77,11 +77,13 @@ function completedArray (text) {
 /* Eventlistener to the button that adds taks to the list.
 First asignes the input value to text. Checks that its not empty.
 Then checks if a task is already in the array, if not. Adds the task to the array as an object.
-Creates an li element and adds it to the todo Ul. Creates a span and adds the task text to it. Adds it to the li item
+Creates an li element and adds it to the todo Ul. Creates a span and adds the task text to it. Creates another span (for the remove "button") adds a class to it and the icon.
+Adds both spans to the li item
 Then adds a Eventlistener for the task items.
 if the task has the class completed it removes that class, changes the value of completed to no in the array and recounts the completed taks and shows it
 else it adds the complted class, changes the value of complted to yes and recounts the compelted tasks and displays it.
 Alseo clears any error messages when either is clicked.
+Adds another eventlistern for the remove "button" (the second span)
 */
 addBtn.addEventListener("click", () => {
     let text = input.value;
@@ -100,19 +102,16 @@ addBtn.addEventListener("click", () => {
             const item = document.createElement("li");
             const itemLabel = document.createElement("span");
             const itemLabel2 = document.createElement("span");
-            const itemBtn = document.createElement("button");
             
             todoList.appendChild(item);
+
             itemLabel.innerText = text;
         
             itemLabel2.setAttribute("class", "material-symbols-outlined");
             itemLabel2.innerText = "delete";
-            //itemBtn.setAttribute("class", "material-symbols-outlined");
-            //itemBtn.innerText = ("delete");
         
             item.appendChild(itemLabel);
             item.appendChild(itemLabel2);
-            //item.appendChild(itemBtn);
 
             itemLabel.addEventListener("click", () => {
                 if(itemLabel.getAttribute("class") === "completed") {
