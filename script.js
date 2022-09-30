@@ -74,6 +74,11 @@ function completedArray (text) {
     };
 };
 
+// Show task compelted when the pages is loaded
+taskCounter();
+// Clears the input from text if page is reloded
+input.value = "";
+
 /* Eventlistener to the button that adds taks to the list.
 First asignes the input value to text. Checks that its not empty.
 Then checks if a task is already in the array, if not. Adds the task to the array as an object.
