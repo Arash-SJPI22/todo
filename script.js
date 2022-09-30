@@ -63,7 +63,7 @@ function rmvFromArray (text) {
     taskCounter();
 };
 
-// Function switches completed from yes to no. To be used when clicked on.
+// Function switches completed from yes to no and no to yes To be used when clicked on.
 // Firstly it finds the tasks array index. Then it checkes the array with that index and the completed vale and changes it from yes to no or no to yes 
 function completedArray (text) {
     const index = todoArray.findIndex(i => i.task === text);
