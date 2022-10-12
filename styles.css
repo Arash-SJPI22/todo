@@ -1,8 +1,8 @@
-
 body {
     width: 720px;
     margin: auto;
     background-color: gold;
+    font-family: 'Roboto Mono', monospace, 'Courier New', Courier;
 }
 
 h1, h2 {
@@ -43,7 +43,7 @@ span {
 .header {
     border: 2.5px dotted black;
     padding: 2rem 0;
-    margin: 2rem 0 1rem 0;
+    margin: 2rem 0 1.5rem 0;
     box-shadow: 10px 10px black;
 }
 
@@ -109,7 +109,7 @@ span {
     color: red;
     border: 2.5px dotted black;
     padding: 2rem 0;
-    margin: 2rem 0 1rem 0;
+    margin: 1.5rem 0 1rem 0;
     box-shadow: 10px 10px black;
 }
 
