@@ -1,3 +1,74 @@
+
+body {
+    width: 720px;
+    margin: auto;
+    background-color: gold;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+input {
+    border-radius: 10px;
+    height: 20px;
+    color: black;
+    background-color: gold;
+    position: relative;
+    left: 30%;
+}
+
+li {
+    width: 400px;
+    overflow: hidden;
+    padding: 0.5rem;
+    position: relative;
+    left: 15%;
+    box-shadow: 5px 5px 8px black;
+    border: 1px soild black;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+span {
+    display: inline-block;
+    width: 360px;
+    overflow: hidden;
+}
+
+.header {
+    border: 2.5px dotted black;
+    padding: 2rem 0;
+    margin: 2rem 0 1rem 0;
+    box-shadow: 10px 10px black;
+}
+
+.lists {
+    border: 2.5px dotted black;
+    box-shadow: 10px 10px black;
+}
+
+.todoDiv, .doneDiv{
+    margin: 1rem 2rem;
+    border: 2.5px dotted black;
+    border-radius: 5px;
+}
+
+.todoLi {
+    margin-right: 50%;
+    width: 80ch;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: DimGray;
+    
+}
+
 .material-symbols-outlined {
     font-variation-settings:
     'FILL' 0,
@@ -5,45 +76,53 @@
     'GRAD' 0,
     'opsz' 24;
     color: darkred;
-}
-
-body {
-    max-width: 60%;
-    margin: auto;
-}
-
-input {
-    border-radius: 10px;
-    height: 20px;
-    color: green;
+    border: 0;
+    background-color: transparent;
 }
 
 #myButton {
     border-radius: 10px;
     width: 80px;
     height: 30px;
-    background-color: black;
-    color: green;
-}
-
-.completed {
-    text-decoration: line-through;
-    color: rebeccapurple;
+    background-color: gold;
+    color: black;
+    font-weight: bold;
+    position: relative;
+    left: 30%;
 }
 
 #todoH2 {
-    color: brown;
+    color: SaddleBrown;
 }
 
 #doneH2 {
-    color: olivedrab
+    color: DarkSlateGray
 }
 
 #todoList {
-    color: red;
+    color: black;
 }
 
 #pInfo {
+    text-align: center;
     font-size: large;
     color: red;
+    border: 2.5px dotted black;
+    padding: 2rem 0;
+    margin: 2rem 0 1rem 0;
+    box-shadow: 10px 10px black;
+}
+
+#pTaskCount {
+    text-align: center;
+}
+
+#clearAllLbl {
+    text-align: center;
+    font-size: 0.7rem;
+    color: brown;
+}
+
+li:nth-of-type(even) {
+    color: grey;
 }

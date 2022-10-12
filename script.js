@@ -106,17 +106,22 @@ addBtn.addEventListener("click", () => {
         
             const item = document.createElement("li");
             const itemLabel = document.createElement("span");
-            const itemLabel2 = document.createElement("span");
+            //const itemLabel2 = document.createElement("span");
+            const itemDelBtn = document.createElement("button");
             
             todoList.appendChild(item);
 
+            // itemLabel.setAttribute("class", "todoLi");
             itemLabel.innerText = text;
         
-            itemLabel2.setAttribute("class", "material-symbols-outlined");
-            itemLabel2.innerText = "delete";
+            //itemLabel2.setAttribute("class"", "material-symbols-outlined");
+            itemDelBtn.setAttribute("class", "material-symbols-outlined");
+            //itemLabel2.innerText = "delete";
+            itemDelBtn.innerText = "delete";
         
             item.appendChild(itemLabel);
-            item.appendChild(itemLabel2);
+            //item.appendChild(itemLabel2);
+            item.appendChild(itemDelBtn);
 
             itemLabel.addEventListener("click", () => {
                 if(itemLabel.getAttribute("class") === "completed") {
@@ -134,7 +139,8 @@ addBtn.addEventListener("click", () => {
                 }
             });
 
-            itemLabel2.addEventListener("click", () => {   
+            
+            itemDelBtn.addEventListener("click", () => {   
                 rmvFromArray(text);                
                 item.remove();
             });
@@ -143,3 +149,6 @@ addBtn.addEventListener("click", () => {
     input.value = "";
 });
 
+/* const clearAllbtn = document.querySelector("#clearAllBtn");
+clearAllbtn.addEventListener("click", () => {
+}); */
