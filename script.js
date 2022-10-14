@@ -92,6 +92,7 @@ Alseo clears any error messages when either is clicked.
 Adds another eventlistern for the remove "button" (the second span)
 */
 addBtn.addEventListener("click", () => {
+    event.preventDefault();
     let text = input.value;
     if (text === "" || text == null) {
         pInfo.innerText = "You cannot add nothing, nothing is not a task that you can complete. That is only possible in Nirvana and you are not there... yet. Try to complete some more tasks to further your journey to Nirvana."

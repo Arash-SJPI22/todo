@@ -19,8 +19,11 @@
         <div class="header">
             <h1>ToDo or ToDie</h1>
             <p id="pTaskCount"></p>
-            <input id="myInput" name="myInput" type="text" maxlength="96" placeholder="Add a task...">
-            <button id="myButton">Add task</button>
+            <form>
+                <input id="myInput" name="myInput" type="text" maxlength="96" placeholder="Add a task..."
+                    autocomplete="off" required autofocus>
+                <button id="myButton" type="submit">Add task</button>
+            </form>
         </div>
         <div class="lists">
             <h2 id="todoH2">Todo</h2>
