@@ -150,9 +150,17 @@ addBtn.addEventListener("click", () => {
     input.value = "";
 });
 
-
+// Removed all of doneList UL's li
+/* Goes through the todoArray from the end (because splice messes up the index if you go from 0 to todoArray.length) if the arrayobject is compelted, remove it.
+* After all are removed from the array then removes all of the doneList ul by removing each child one at the time until none are left. Then calls the taskCounter function to
+* recalculate how many task are left. Could also just sett the pTaskCount to 0, but its safer this way
+*/
 clearAllbtn.addEventListener("click", () => {
-    todoArray.splice(0, todoArray.length);
+    for (let f=todoArray.length - 1; f >= 0; f--){
+        if (todoArray[f].completed === "yes") {
+            todoArray.splice(f, 1);
+        };
+    };
     while (doneList.hasChildNodes()) {
         doneList.removeChild(doneList.firstChild);
     };
