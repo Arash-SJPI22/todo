@@ -4,6 +4,7 @@ const todoList = document.querySelector("#todoList");
 const doneList = document.querySelector("#doneList");
 const pTaskCount = document.querySelector("#pTaskCount");
 const pInfo = document.querySelector("#pInfo");
+const clearAllbtn = document.querySelector("#clearAllBtn");
 const todoArray = [];
 
 // For the idiots
@@ -149,6 +150,11 @@ addBtn.addEventListener("click", () => {
     input.value = "";
 });
 
-/* const clearAllbtn = document.querySelector("#clearAllBtn");
+
 clearAllbtn.addEventListener("click", () => {
-}); */
+    todoArray.splice(0, todoArray.length);
+    while (doneList.hasChildNodes()) {
+        doneList.removeChild(doneList.firstChild);
+    };
+    taskCounter();
+});
