@@ -156,13 +156,20 @@ addBtn.addEventListener("click", () => {
 * recalculate how many task are left. Could also just sett the pTaskCount to 0, but its safer this way
 */
 clearAllbtn.addEventListener("click", () => {
-    for (let f=todoArray.length - 1; f >= 0; f--){
-        if (todoArray[f].completed === "yes") {
-            todoArray.splice(f, 1);
+    if (doneList.childElementCount == 0) {
+        pInfo.innerText = "It is empty, like your head!";
+        checkIdiot();
+    } else {
+        for (let f=todoArray.length - 1; f >= 0; f--){
+            if (todoArray[f].completed === "yes") {
+                todoArray.splice(f, 1);
+            };
         };
-    };
-    while (doneList.hasChildNodes()) {
-        doneList.removeChild(doneList.firstChild);
-    };
+        
+        while (doneList.hasChildNodes()) {
+            doneList.removeChild(doneList.firstChild);
+        };
+        
     taskCounter();
+    }
 });
